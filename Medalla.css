@@ -50,8 +50,15 @@
 }
 
 audio.elementosCreados {
-    height: auto !important;
+    width: 200px;
+    height: 35px;
 }
+
+img.elementosCreados {
+    width: 180px;
+    height: auto;
+}
+
 
 video.elementosCreados {
     width: 220px !important;

@@ -12,21 +12,34 @@ Boton.addEventListener("mouseup", () => {
 })
 
 const elementos = [
-    "guitarra/22.jpg",
-    "guitarra/23.jpg",
-    "guitarra/24.jpg",
-    "guitarra/25.jpg",
-    "guitarra/26.jpg",
-    "guitarra/27.jpg",
-    "guitarra/28.jpg",
+    "guitarra/video1.mp4",
+    "guitarra/video2.mp4",
+    "guitarra/video3.mp4",
+    "guitarra/video4.mp4",
+    "guitarra/video5.mp4",
+    "guitarra/video6.mp4",
+    "guitarra/video7.mp4",
+    "guitarra/video8.mp4",
+    "guitarra/video9.mp4",
+
+    "guitarra/f1.jpg",
+    "guitarra/f2.PNG",
+    "guitarra/f3.JPG",
+    "guitarra/f4.JPG",
+    "guitarra/f5.JPG",
+    "guitarra/f6.JPG",
+    "guitarra/f7.JPG",
+    "guitarra/f8.JPG",
+    "guitarra/f9.JPG",
+
     "guitarra/a1.mp3",
     "guitarra/a2.mp3",
     "guitarra/a3.mp3",
     "guitarra/a4.mp3",
-    "guitarra/a5.mp3",
     "guitarra/a6.mp3",
     "guitarra/a7.mp3",
-    "guitarra/5.mp4"
+    "guitarra/a8.mp3",
+    "guitarra/a9.mp3"
 ];
 
 function Interaccion(elem) {
@@ -42,6 +55,7 @@ function Interaccion(elem) {
     }
 
     if (src.endsWith(".mp3") || src.endsWith(".wav")) {
+        elem.style.width = "200px";
         elem.addEventListener("mouseenter", () => elem.play());
         elem.addEventListener("mouseleave", () => {
             elem.pause();
@@ -66,23 +80,28 @@ function crearElemento() {
     const ruta = elementos[indice];
 
     let nuevo;
+    const rutaBaja = ruta.toLowerCase();
 
-    if (ruta.endsWith(".mp3") || ruta.endsWith(".wav")) {
+    if (rutaBaja.endsWith(".mp3") || rutaBaja.endsWith(".wav")) {
         nuevo = document.createElement("audio");
         nuevo.src = ruta;
         nuevo.controls = true;
     }
-    else if (ruta.endsWith(".mp4") || ruta.endsWith(".webm")) {
+    else if (rutaBaja.endsWith(".mp4")){
         nuevo = document.createElement("video");
         nuevo.src = ruta;
         nuevo.muted = true;
         nuevo.controls = false;
     }
-    else {
+    else if (rutaBaja.endsWith(".jpg") || rutaBaja.endsWith(".jpeg") || rutaBaja.endsWith(".png") || rutaBaja.endsWith(".webp")) {
         nuevo = document.createElement("img");
         nuevo.src = ruta;
     }
-
+//si no es ninguno...
+    else {
+        console.error("Error: Tipo de archivo o extensión no reconocido para la ruta:", ruta);
+        return; 
+    }
     nuevo.classList.add("elementosCreados");
 
     const zona = document.getElementById("zonaProhibidaCentro");
