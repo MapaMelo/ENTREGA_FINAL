@@ -13,7 +13,7 @@ Boton.addEventListener("mouseup", () => {
 
 const elementos = [
 
-    "medalla/a1.mp3",
+    "Medalla/a1.mp3",
 
 ];
 
